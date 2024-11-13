@@ -49,9 +49,15 @@ function getCircleCircumference(radius) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  throw new Error('Not implemented');
-  // return (value1 + value2) / 2;
+function getAverage(value1, value2) {
+  const var1 = value1 - Number.MAX_VALUE;
+  const var2 = value2 - Number.MAX_VALUE;
+
+  if (value1 >= Number.MAX_VALUE && value2 >= Number.MAX_VALUE) {
+    return (var1 + var2) / 2 + Number.MAX_VALUE;
+  }
+
+  return (value1 + value2) / 2;
 }
 
 /**
@@ -69,8 +75,8 @@ function getAverage(/* value1, value2 */) {
  *   (0,0) (1,0)    => 1
  *   (-5,0) (10,-10) => 18.027756377319946
  */
-function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getDistanceBetweenPoints(x1, y1, x2, y2) {
+  return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
 /**
@@ -106,8 +112,11 @@ function getLinearEquationRoot(a, b) {
  *   (0,-1) (1,0)    => π/2
  *   (0,1) (0,1)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  return Math.acos(
+    ((x1 * x2 + y2 * y1) / Math.sqrt(x1 ** 2 + y1 ** 2)) *
+      Math.sqrt(x2 ** 2 + y2 ** 2)
+  );
 }
 
 /**
@@ -123,8 +132,13 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
+function getLastDigit(value) {
+  if (value < 10) return value;
+  if (value < 100) {
+    return value % 10;
+  }
+
+  return value % 100;
 }
 
 /**
